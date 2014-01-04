@@ -1,1 +1,10 @@
+<h1> Buildings Index </h1>
 <%= link_to 'Add New Building', new_building_path %>
+
+
+<ul>
+  <% @buildings.each do |building| %>
+    <li><p>Address: <%= building.street_address %></p></li>
+    <li><p>Owner Id: <%= building.owner_id %></p> </li>
+  <% end %>
+</ul>

@@ -18,7 +18,6 @@ describe Building do
 
     it { should have_valid(:description).when('Roach motel') }
 
-    it { should validate_presence_of :owner }
   end
 
   context 'associations' do

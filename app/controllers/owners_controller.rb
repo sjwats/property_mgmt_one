@@ -19,7 +19,7 @@ class OwnersController < ApplicationController
 
   def destroy
     Owner.find(params[:id]).destroy
-    redirect_to owners_path
+    redirect_to owners_path, notice: 'Owner successfully deleted!'
   end
 
 
