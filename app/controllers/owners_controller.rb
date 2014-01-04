@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
   def index
-
+    @owners = Owner.all
   end
 
   def new
@@ -15,6 +15,11 @@ class OwnersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    Owner.find(params[:id]).destroy
+    redirect_to owners_path, notice: 'Owner successfully deleted!'
   end
 
 

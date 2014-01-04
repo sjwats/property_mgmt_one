@@ -37,4 +37,17 @@ feature 'record an owner' do
     end
   end
 
+  scenario 'with duplicate email' do
+    owner = FactoryGirl.create(:owner)
+    visit new_owner_path
+    fill_in 'First name', with: 'Michael'
+    fill_in 'Last name', with: 'Bluth'
+    fill_in 'Email', with: owner.email
+    click_button 'Add Owner'
+    expect(page).to_not have_content('Owner Added!')
+    within ".input.owner_email" do
+      expect(page).to have_content "has already been taken"
+    end
+  end
+
 end
