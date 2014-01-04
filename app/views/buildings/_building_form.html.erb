@@ -1,7 +1,7 @@
 <%= simple_form_for @building do |f| %>
   <%= f.input :street_address %>
   <%= f.input :city %>
-  <%= f.input :state, collection: Building.usa_states, include_blank: false %>
+  <%= f.input :state, collection: Building.usa_states, include_blank: true %>
   <%= f.input :postal_code %>
   <%= f.input :description, as: :text %>
 

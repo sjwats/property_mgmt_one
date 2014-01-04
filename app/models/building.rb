@@ -9,7 +9,6 @@ class Building < ActiveRecord::Base
   validates_length_of :postal_code, is: 5
   validates_presence_of :state
   validates_inclusion_of :state, in: USASTATES
-  validates_presence_of :owner
 
   belongs_to :owner,
   inverse_of: :buildings

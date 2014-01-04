@@ -12,7 +12,7 @@ class BuildingsController < ApplicationController
     if @building.save
       redirect_to new_building_path, notice: 'Building Added!'
     else
-      redirect_to new_building_path
+      render :new
     end
   end
 
