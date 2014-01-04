@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'owner is correlated with building' do
-  scenario 'owner is correlated to a building' do
+  scenario 'owner is added to a building' do
     owner = FactoryGirl.create(:owner)
     visit '/'
     click_link 'Add New Building'
@@ -15,7 +15,7 @@ feature 'owner is correlated with building' do
     expect(page).to have_content('Building Added!')
   end
 
-   scenario 'owner is associated with a building' do
+   scenario 'owner is verifiably correlated with a building' do
     owner = FactoryGirl.create(:owner)
     visit '/'
     click_link 'Add New Building'
@@ -50,6 +50,8 @@ feature 'owner is correlated with building' do
     visit owners_path
     click_link 'Delete Owner'
     expect(page).to_not have_content(owner.first_name)
+    expect(page).to_not have_content(owner.last_name)
+    expect(page).to_not have_content(owner.email)
     expect(page).to_not have_content('41 Wharf st')
     expect(page).to_not have_content('50 Harvard Ave')
     expect(page).to have_content('Owner successfully deleted!')
