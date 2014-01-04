@@ -13,6 +13,8 @@ describe Building do
 
     it { should have_valid(:postal_code).when('04102', '12345') }
     it { should_not have_valid(:postal_code).when(nil, '') }
+    it { should ensure_length_of(:postal_code).is_equal_to(5) }
+
 
     it { should have_valid(:description).when('Roach motel') }
 
