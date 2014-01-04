@@ -18,6 +18,7 @@ describe Building do
 
     it { should have_valid(:description).when('Roach motel') }
 
+    it { should have_valid(:owner_id).when(1, 2) }
   end
 
   context 'associations' do
