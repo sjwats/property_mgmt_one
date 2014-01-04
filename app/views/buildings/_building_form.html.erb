@@ -4,6 +4,7 @@
   <%= f.input :state, collection: Building.usa_states, include_blank: true %>
   <%= f.input :postal_code %>
   <%= f.input :description, as: :text %>
+  <%= f.input :owner_id, collection: Owner.all, label_method: :contact_info, include_blank: true %>
 
   <%= f.submit 'Add Building' %>
 

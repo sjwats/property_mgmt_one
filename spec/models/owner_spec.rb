@@ -15,7 +15,7 @@ describe Owner do
   end
 
   context 'associations' do
-    it { should have_many(:buildings).dependent(:destroy) }
+    it { should have_many(:buildings).dependent(:nullify) }
   end
 
 end
