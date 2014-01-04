@@ -30,7 +30,7 @@ feature 'owner is correlated with building' do
     expect(page).to have_content(owner.id)
   end
 
-  scenario 'owner is deleted' do
+  scenario 'owner is deleted from multiple buildings' do
     owner = FactoryGirl.create(:owner)
     visit new_building_path
     fill_in 'Street address', with: '41 Wharf st'
@@ -52,6 +52,7 @@ feature 'owner is correlated with building' do
     expect(page).to_not have_content(owner.first_name)
     expect(page).to_not have_content(owner.last_name)
     expect(page).to_not have_content(owner.email)
+    expect(page).to_not have_content(owner.company_name)
     expect(page).to_not have_content('41 Wharf st')
     expect(page).to_not have_content('50 Harvard Ave')
     expect(page).to have_content('Owner successfully deleted!')
