@@ -6,10 +6,11 @@ feature 'User records a new building' do
     click_link 'Add New Building'
     fill_in 'Street address', with: '41 Wharf st'
     fill_in 'City', with: 'Boston'
-    select state, from: "State"
+    select('ME', from: "State")
     fill_in 'Postal code', with: '02135'
     fill_in 'Description', with: 'Optional description'
     click_button 'Add Building'
+    save_and_open_page
     expect(page).to have_content('Building Added!')
     expect(page).to have_content('41 Wharf st')
     expect(page).to have_content('Boston')
