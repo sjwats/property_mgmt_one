@@ -1,4 +1,7 @@
 PropertyMgmtOne::Application.routes.draw do
+  root 'buildings#index'
+  resources :buildings
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
