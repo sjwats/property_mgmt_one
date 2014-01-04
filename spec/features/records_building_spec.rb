@@ -11,6 +11,7 @@ feature 'User records a new building' do
     fill_in 'Description', with: 'Optional description'
     click_button 'Add Building'
     expect(page).to have_content('Building Added!')
+
   end
 
   scenario 'user records new building with invalid attributes' do
@@ -19,6 +20,7 @@ feature 'User records a new building' do
       click_on "Add Building"
 
       expect(page).to_not have_content('Building Added!')
+      expect(page).to have_selector('p.add_building')
 
       within ".input.building_street_address" do
         expect(page).to have_content "can't be blank"
