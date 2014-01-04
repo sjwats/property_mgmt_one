@@ -11,6 +11,7 @@ feature 'record an owner' do
     fill_in 'Company name', with: 'Bluth Company'
     click_button 'Add Owner'
     expect(page).to have_content('Owner Added!')
+    expect(page).to have_selector('p.add_owner')
 
   end
 
@@ -21,6 +22,7 @@ feature 'record an owner' do
     click_button 'Add Owner'
 
     expect(page).to_not have_content('Owner Added!')
+    expect(page).to have_selector('p.add_owner')
 
     within ".input.owner_first_name" do
       expect(page).to have_content "can't be blank"
