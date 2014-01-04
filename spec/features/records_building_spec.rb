@@ -15,28 +15,44 @@ feature 'User records a new building' do
   end
 
   scenario 'user records new building with invalid attributes' do
-      visit new_building_path
+    visit new_building_path
 
-      click_on "Add Building"
+    click_on "Add Building"
 
-      expect(page).to_not have_content('Building Added!')
-      expect(page).to have_selector('p.add_building')
+    expect(page).to_not have_content('Building Added!')
+    expect(page).to have_selector('p.add_building')
 
-      within ".input.building_street_address" do
-        expect(page).to have_content "can't be blank"
-      end
+    within ".input.building_street_address" do
+      expect(page).to have_content "can't be blank"
+    end
 
-      within ".input.building_city" do
-        expect(page).to have_content "can't be blank"
-      end
+    within ".input.building_city" do
+      expect(page).to have_content "can't be blank"
+    end
 
-      within ".input.building_state" do
-        expect(page).to have_content "can't be blank"
-      end
+    within ".input.building_state" do
+      expect(page).to have_content "can't be blank"
+    end
 
-      within ".input.building_postal_code" do
-        expect(page).to have_content "can't be blank"
-      end
+    within ".input.building_postal_code" do
+      expect(page).to have_content "can't be blank"
+    end
+  end
+
+  scenario 'records building with duplicate address' do
+    building = FactoryGirl.create(:building)
+    visit new_building_path
+    fill_in 'Street address', with: building.street_address
+    fill_in 'City', with: 'Boston'
+    select 'ME', from: 'State'
+    fill_in 'Postal code', with: '02135'
+    fill_in 'Description', with: 'Optional description'
+    click_button 'Add Building'
+    expect(page).to_not have_content('Building Added!')
+    within ".input.building_street_address" do
+      expect(page).to have_content "has already been taken"
+    end
+
   end
 
 end

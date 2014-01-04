@@ -1,1 +1,13 @@
 <%= link_to 'Add New Owner', new_owner_path %>
+
+
+<% @owners.each do |owner| %>
+  <%= owner.first_name %>
+  <%= owner.last_name %>
+  <%= owner.email %>
+  <%= owner.company_name %>
+  <% owner.buildings.each do |building| %>
+    <%= building.street_address %>
+  <% end %>
+  <%= link_to "Delete Owner", owner, method: :delete %>
+<%- end -%>

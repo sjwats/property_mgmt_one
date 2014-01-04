@@ -4,6 +4,7 @@ class Building < ActiveRecord::Base
     MO MT NE NV NH NJ NM NY NC ND OH OK OR PA PR RI SC SD TN TX UT VT VA WA WV
     WI WY}
   validates_presence_of :street_address
+  validates_uniqueness_of :street_address
   validates_presence_of :city
   validates_presence_of :postal_code
   validates_length_of :postal_code, is: 5
