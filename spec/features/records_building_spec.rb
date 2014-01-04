@@ -11,6 +11,7 @@ feature 'User records a new building' do
     fill_in 'Description', with: 'Optional description'
     click_button 'Add Building'
     expect(page).to have_content('Building Added!')
+    expect(page).to have_selector('p.add_building')
 
   end
 
